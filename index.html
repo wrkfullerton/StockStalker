@@ -1,47 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stock Stalker</title>
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="assets/css/materialize.css"  media="screen,projection"/>
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="viewport" content="width=device-width, user-scalable=no">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Stalker</title>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="assets/css/materialize.css" media="screen,projection" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
+
 <body>
   <nav>
     <div class="nav-wrapper #448aff blue accent-2">
-      <a href="index.html" class="brand-logo center">Local Gigz</a>
+      <a href="index.html" class="brand-logo center">Stock Stalker</a>
     </div>
+
+
   </nav>
-    <div class="container">
-        <div class="section">
-            <h5 class="center-align">Local Job Search</h5>
-            <p class="center-align">Search and find jobs locally.</p>
-        <form>
-            <label for="dJob">Enter your desired job type.</label><br>
-            <input type="text" id="dJob" name="dJob"><br>
-            <label for=cityZip">Enter your city or zip code.</label><br>
-            <input type="text" id="cityZip" name="cityZip"><br>
-            <label for=numReq">Number of Request</label><br>
-            <input type="number" id="quantity" name="quantity" min="1" max="9"><br>
-            <button class="btn waves-effect waves-light #448aff blue accent-2" type="submit" name="action">Submit</button>
-        </form>
-        </div>     
-        <div>
-            <!-- For the API results to go -->
-        </div>
+
+  <hr>
+
+  <div class="container">
+    <div class="section">
+      <h5 class="center-align">Stock Price & Market Info</h5>
+
+      <hr>
+
+      <div intrinio-widget-type="ticker_tape" intrinio-widget-tickers="DOW30"></div>
+      <script>
+        (function (f, i, n, t, e, c, h) {
+          f['IntrinioWidgetsObject'] = e; f[e] = f[e] || function () {
+            (f[e].q = f[e].q || []).push(arguments)
+          }, f[e].l = 1 * new Date(); c = i.createElement(n),
+            h = i.getElementsByTagName(n)[0]; c.async = 1; c.src = t; h.parentNode.insertBefore(c, h)
+        })(window, document, 'script', 'https://widget-api-cdn.intrinio.com/intrinio-widgets.min.js', 'iw');
+        iw('initialize', { userId: '2095ee9f024bec25b2c782d4fe019433bdd1271613906cd7b5125229f23d654b' });
+
+      </script>
+      <!-- <p class="center-align">Search and find jobs locally.</p> -->
+      <form>
+        <label for="dJob"><strong>Enter stock name or symbol</strong></label><br>
+        <input type="text" id="dJob" name="dJob"><br>
+        <button class="btn waves-effect waves-light #448aff blue accent-2" type="submit" id="run-search"
+          name="action">Submit</button>
+      </form>
     </div>
-    
-      
-    
-    <!-- Javascript -->
-    <script src="assets/js/script.js"></script>    
+
+    <!-- For the API results to go -->
+    <div id="results">
+      <h5>RESULTS:</h5>
+    </div>
+
+    <br>
+
+    <button class="btn waves-effect waves-light #448aff blue accent-2" type="submit" id="run-search" name="action">Add
+      to Watchlist</button>
+
+    <hr>
+
+
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com" rel="noopener"
+          target="_blank"><span class="blue-text">Top Stocks</span></a> by TradingView</div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js"
+        async>
+          {
+            "colorTheme": "light",
+              "dateRange": "12m",
+                "showChart": true,
+                  "locale": "en",
+                    "largeChartUrl": "",
+                      "isTransparent": false,
+                        "width": "400",
+                          "height": "660",
+                            "plotLineColorGrowing": "rgba(33, 150, 243, 1)",
+                              "plotLineColorFalling": "rgba(33, 150, 243, 1)",
+                                "gridLineColor": "rgba(240, 243, 250, 1)",
+                                  "scaleFontColor": "rgba(120, 123, 134, 1)",
+                                    "belowLineFillColorGrowing": "rgba(33, 150, 243, 0.12)",
+                                      "belowLineFillColorFalling": "rgba(33, 150, 243, 0.12)",
+                                        "symbolActiveColor": "rgba(33, 150, 243, 0.12)",
+                                          "tabs": [
+                                            {
+                                              "title": "Indices",
+                                              "symbols": [
+                                                {
+                                                  "s": "FOREXCOM:SPXUSD",
+                                                  "d": "S&P 500"
+                                                },
+                                                {
+                                                  "s": "FOREXCOM:NSXUSD",
+                                                  "d": "Nasdaq 100"
+                                                },
+                                                {
+                                                  "s": "FOREXCOM:DJI",
+                                                  "d": "Dow 30"
+                                                }
+                                              ],
+                                              "originalTitle": "Indices"
+                                            },
+                                            {
+                                              "title": "Top Stocks",
+                                              "symbols": [
+                                                {
+                                                  "s": "NASDAQ:AMZN"
+                                                },
+                                                {
+                                                  "s": "NASDAQ:AAPL"
+                                                },
+                                                {
+                                                  "s": "NASDAQ:MSFT"
+                                                }
+                                              ]
+                                            }
+                                          ]
+          }
+
+        </script>
+    </div>
+    <!-- TradingView Widget END -->
+  </div>
+  <footer>
+    <div class="page-footer #e0e0e0 grey lighten-2">
+  </footer>
+
+
+
+
+  <!-- Javascript -->
+
+
+
+
+  <script src="assets/js/script.js"></script>
   <!--JavaScript at end of body for optimized loading-->
   <script type="text/javascript" src="assets/js/materialize.js"></script>
+
 </body>
+
 </html>
