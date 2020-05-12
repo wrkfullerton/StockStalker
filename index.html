@@ -7,38 +7,34 @@
   <title>Stock Stalker</title>
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="assets/css/materialize.css" media="screen,projection" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- CSS -->
+  <link type="text/css" rel="stylesheet" href="assets/css/style.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css" media="screen,projection" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="viewport" content="width=device-width, user-scalable=no">
 </head>
 
-
+<!-- Begin Body -->
 <body>
+  
+    <!-- Begin Nav -->
   <nav>
     <div class="nav-wrapper #448aff blue accent-2">
       <a href="index.html" class="brand-logo center">Stock Stalker</a>
     </div>
   </nav>
+  <!-- End Nav -->
 
+ 
   <div class="container">
     <div class="section">
       <h5 class="center-align">Stock Price & Market Info</h5>
 
       <div intrinio-widget-type="ticker_tape" intrinio-widget-tickers="DOW30"></div>
-
-
-
-
-
-
       <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Stock Symbol Search <i
           class="tiny material-icons">search</i></a>
-
-
       <br>
 
       <form id="stockQuote" action="" onsubmit="event.preventDefault(); sConsole(); Console();">
