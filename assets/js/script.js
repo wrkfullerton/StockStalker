@@ -1,55 +1,45 @@
-// var settings = {
-//     "async": true,
-//     "crossDomain": true,
-//     "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-summary?region=US&lang=en",
-//     "method": "GET",
-//     "headers": {
-//         "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-//         "x-rapidapi-key": "4baffcd784msh949913134da149ep161ff1jsnabed21be07b4"
-//     }
-// }
+// function collects user input data, appends results to screen 
+function sConsole() {
+    var data = document.getElementById("stockInput");
+    console.log(stockInput.value); // data is the element, and we want its value
 
-// $.ajax(settings).done(function (response) {
-//     console.log(response);
-//     console.log(response.marketSummaryResponse.result[0].regularMarketPrice.fmt)
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-quotes?region=US&lang=en&symbols=" + stockInput.value + "%252CKC%253DF%252C002210.KS%252CIWM%252CAMECX",
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
+            "x-rapidapi-key": "4baffcd784msh949913134da149ep161ff1jsnabed21be07b4"
+        }
 
+    }
+    $.ajax(settings).done(function (response) {
+        console.log(response);
 
+        $(document).ready(function () {
+            $("#results").append("<br>" + "<strong>Stock Name: </strong>" + response.quoteResponse.result[0].longName + "<br>");
+            $("#results").append("<br>" + "<strong>Symbol: </strong>" + response.quoteResponse.result[0].symbol + "<br>");
+            $("#results").append("<br>" + "<strong>Price: $</strong>" + response.quoteResponse.result[0].regularMarketPrice + "<br>");
+            
+        })
 
-//     $(document).ready(function () {
-//         $("#results").append("<br>" + "<strong>Stock Name: </strong>" + response.marketSummaryResponse.result[0].exchange + "<br>");
-//         $("#results").append("<br>" + "<strong>Price: </strong>" + response.marketSummaryResponse.result[0].regularMarketPrice.fmt + "<br>");
-//     // $("#results").append("<br>" + "<strong>Job ID: </strong>" + response.jobs[0].job_id + "<br>");
-// $("#results").append("<br>" + "<strong>Location: </strong>" + response.jobs[0].location + "<br>");
-// $("#results").append("<br>" + "<strong>Description: </strong>" + response.jobs[0].description + "<br>");
+    }) 
 
-// });
+}
 
-// });
+function Console() {
+    var data = document.getElementById("stockInput");
+    console.log(stockInput.value); // data is the element, and we want its value
 
-// var settings = {
-//     "async": true,
-//     "crossDomain": true,
-//     "url": "https://morningstar1.p.rapidapi.com/convenient/fundamentals/yearly/restated?Mic=XNAS&Ticker=MSFT",
-//     "method": "GET",
-//     "headers": {
-//         "x-rapidapi-host": "morningstar1.p.rapidapi.com",
-//         "x-rapidapi-key": "4baffcd784msh949913134da149ep161ff1jsnabed21be07b4",
-//         "accept": "string"
-//     }
-// }
-
-// $.ajax(settings).done(function (response) {
-//     console.log(response);
-// });
-
-var settings = {
+let settings = {
     "async": true,
     "crossDomain": true,
-    "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-quotes?region=US&lang=en&symbols=BAC%252CKC%253DF%252C002210.KS%252CIWM%252CAMECX",
+    "url": "https://bloomberg-market-and-financial-news.p.rapidapi.com/stock/get-statistics?id=" + stockInput.value + "%253Aus",
     "method": "GET",
     "headers": {
-        "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-        "x-rapidapi-key": "4baffcd784msh949913134da149ep161ff1jsnabed21be07b4"
+        "x-rapidapi-host": "bloomberg-market-and-financial-news.p.rapidapi.com",
+        "x-rapidapi-key": "dbfbc65486msheb30cfc9fd5f9b7p1920c1jsn7932b76c94ef"
     }
 }
 
@@ -57,51 +47,19 @@ $.ajax(settings).done(function (response) {
     console.log(response);
 
     $(document).ready(function () {
-        $("#results").append("<br>" + "<strong>Stock Name: </strong>" + response.quoteResponse.result[0].longName + "<br>");
-        $("#results").append("<br>" + "<strong>Symbol: </strong>" + response.quoteResponse.result[0].symbol + "<br>");
-        $("#results").append("<br>" + "<strong>Price: </strong>" + response.quoteResponse.result[0].regularMarketPrice + "<br>");
-        // $("#results").append("<br>" + "<strong>Price: </strong>" + response.marketSummaryResponse.result[0].regularMarketPrice.fmt + "<br>");
+        $("#results").append("<br>" + "<strong>Price / Earnings Ratio: </strong>" + response.result[0].table[0].value + "<br>");
+        $("#results").append("<br>" + "<strong>Earnings Per Share: </strong>" + response.result[0].table[3].value + "<br>");
+        $("#results").append("<br>" + "<strong>Market Capitalization: </strong>" + response.result[0].table[6].value + "<br>");
+        $("#results").append("<br>" + "<strong>Shares Outstanding: </strong>" + response.result[0].table[7].value + "<br>");
+        $("#results").append("<br>" + "<strong>Price / Book Ratio: </strong>" + response.result[0].table[8].value + "<br>");
+        $("#results").append("<br>" + "<strong>Price / Sales Ratio: </strong>" + response.result[0].table[9].value + "<br>");
+        $("#results").append("<br>" + "<strong>Dividend Indicated Gross Yield: </strong>" + response.result[0].table[10].value + "<br>");
+        $("#results").append("<br>" + "<strong>Average Volume: </strong>" + response.result[0].table[14].value + "<br>");
+        
     })
-
-});
-
-// });
-
-// var settings = {
-//     "async": true,
-//     "crossDomain": true,
-//     "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/news/get-details?uuid=375879c0-08f3-32fb-8aaf-523c93ff8792",
-//     "method": "GET",
-//     "headers": {
-//         "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-//         "x-rapidapi-key": "4baffcd784msh949913134da149ep161ff1jsnabed21be07b4"
-//     }
-// }
-
-// $.ajax(settings).done(function (response) {
-//     console.log(response);
-
-// });
-
-// !function () {
-//     "use strict"; var t;
-//     var e = ((t = {})
-//     ["color-brand"] = "#2196f3",
-//         t["color-gull-gray"] = "#9db2bd", t["color-scooter"] = "#38acdb",
-//         t["color-curious-blue"] = "#299dcd", t);
-
-//     var r = document.createElement("a");
-
-
-// }();
-
-
-// function displayStockInfo() {
-
-//     var stock = $(this).attr("#results");
-
-// javascript code for ticker
-
-
-
-// javascript code for tradingview chart
+// resets the page when submit/enter is pressed, appends results for new user input
+$("#submit").click(function () {
+    $("#results").empty();
+    })
+})
+}
