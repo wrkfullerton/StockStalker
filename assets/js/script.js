@@ -18,6 +18,8 @@ function sConsole() {
         console.log(response);
 
         $(document).ready(function () {
+            $("#results").append("<hr>");
+            $("#results").append("<h5><strong>Company:</strong></h5>");
             $("#results").append("<br>" + "<strong>Stock Name: </strong>" + response.quoteResponse.result[0].longName + "<br>");
             $("#results").append("<br>" + "<strong>Symbol: </strong>" + response.quoteResponse.result[0].symbol + "<br>");
             $("#results").append("<br>" + "<strong>Price: $</strong>" + response.quoteResponse.result[0].regularMarketPrice + "<br>");
@@ -47,19 +49,22 @@ $.ajax(settings).done(function (response) {
     console.log(response);
 
     $(document).ready(function () {
-        $("#results").append("<br>" + "<strong>Price / Earnings Ratio: </strong>" + response.result[0].table[0].value + "<br>");
-        $("#results").append("<br>" + "<strong>Earnings Per Share: </strong>" + response.result[0].table[3].value + "<br>");
-        $("#results").append("<br>" + "<strong>Market Capitalization: </strong>" + response.result[0].table[6].value + "<br>");
-        $("#results").append("<br>" + "<strong>Shares Outstanding: </strong>" + response.result[0].table[7].value + "<br>");
-        $("#results").append("<br>" + "<strong>Price / Book Ratio: </strong>" + response.result[0].table[8].value + "<br>");
-        $("#results").append("<br>" + "<strong>Price / Sales Ratio: </strong>" + response.result[0].table[9].value + "<br>");
-        $("#results").append("<br>" + "<strong>Dividend Indicated Gross Yield: </strong>" + response.result[0].table[10].value + "<br>");
-        $("#results").append("<br>" + "<strong>Average Volume: </strong>" + response.result[0].table[14].value + "<br>");
+        $("#results2").append("<h5><strong>Latest Financials:</strong></h5>");
+        $("#results2").append("<br>" + "<strong>Price / Earnings Ratio: </strong>" + response.result[0].table[0].value + "<br>");
+        $("#results2").append("<br>" + "<strong>Earnings Per Share: </strong>" + response.result[0].table[3].value + "<br>");
+        $("#results2").append("<br>" + "<strong>Market Capitalization: </strong>" + response.result[0].table[6].value + "<br>");
+        $("#results2").append("<br>" + "<strong>Shares Outstanding: </strong>" + response.result[0].table[7].value + "<br>");
+        $("#results2").append("<br>" + "<strong>Price / Book Ratio: </strong>" + response.result[0].table[8].value + "<br>");
+        $("#results2").append("<br>" + "<strong>Price / Sales Ratio: </strong>" + response.result[0].table[9].value + "<br>");
+        $("#results2").append("<br>" + "<strong>Dividend Indicated Gross Yield: </strong>" + response.result[0].table[10].value + "<br>");
+        $("#results2").append("<br>" + "<strong>Average Volume: </strong>" + response.result[0].table[14].value + "<br>");
         
     })
 // resets the page when submit/enter is pressed, appends results for new user input
 $("#submit").click(function () {
-    $("#results").empty();
+    $("#results").empty(),
+    $("#results2").empty();
     })
 })
 }
+
