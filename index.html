@@ -16,29 +16,25 @@
   <meta name="viewport" content="width=device-width, user-scalable=no">
 </head>
 
-
+<!-- Begin Body -->
 <body>
+  
+    <!-- Begin Nav -->
   <nav>
-    <div class="nav-wrapper #448aff blue accent-2">
-      <a href="index.html" class="brand-logo center">Stock Stalker</a>
+    <div class="nav-wrapper #43a047 green darken-1">
+      <a href="index.html" class="brand-logo center" style="font-family: copperplate; font-size: 24px;">Stock Stalker</a>
     </div>
   </nav>
+  <!-- End Nav -->
 
+ 
   <div class="container">
     <div class="section">
-      <h5 class="center-align">Stock Price & Market Info</h5>
+      <h5 class="center-align style=" style="font-family: copperplate;">Stock Price & Market Info</h5>
 
       <div intrinio-widget-type="ticker_tape" intrinio-widget-tickers="DOW30"></div>
-
-
-
-
-
-
-      <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Stock Symbol Search <i
+      <a class="waves-effect waves-light btn modal-trigger #448aff blue accent-2" href="#modal1">Stock Symbol Search <i
           class="tiny material-icons">search</i></a>
-
-
       <br>
 
       <form id="stockQuote" action="" onsubmit="event.preventDefault(); sConsole(); Console();">
@@ -46,7 +42,7 @@
 
         <input type="text" name="stockInput" id="stockInput"></input>
         <br />
-        <button class="btn waves-effect waves-light #448aff blue accent-2" id="submit">Submit</button>
+        <button class="btn waves-effect waves-light #43a047 green darken-1" id="submit">Submit</button>
       </form>
       <br>
 
