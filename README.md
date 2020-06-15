@@ -11,3 +11,5 @@ User Story:
 Site deployed at:
 
 https://wrkfullerton.github.io/StockStalker/
+
+![Stock Stalker gif Demo](https://github.com/wrkfullerton/StockStalker/blob/master/StockStalker.gif?raw=true)
